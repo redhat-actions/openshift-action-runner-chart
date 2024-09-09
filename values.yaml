@@ -12,6 +12,9 @@ githubRepository: ""
 # eg. github.mycompany.com
 githubDomain: ""
 
+# Set to either "app" for GitHub App Auth, or "pat" for PAT Auth. See the sections below for config of each
+authType: app
+
 ### Values for PAT Auth
 ### Refer to https://github.com/redhat-actions/openshift-actions-runners#pat-guidelines
 

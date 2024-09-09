@@ -87,7 +87,7 @@ spec:
             {{- end }}
 
             # App Auth
-            {{- if .Values.githubAppId }}
+            {{- if eq .Values.authType "app" }}
             - name: GITHUB_APP_ID
               valueFrom:
                 secretKeyRef:
@@ -106,7 +106,7 @@ spec:
             {{- end }}
 
             # or, PAT Auth
-            {{- if .Values.githubPat }}
+             {{- if eq .Values.authType "pat" }}
             - name: GITHUB_PAT
               valueFrom:
                 secretKeyRef:
