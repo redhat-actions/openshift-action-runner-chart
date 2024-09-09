@@ -59,8 +59,10 @@ You can also clone this repository and reference the chart's directory. This all
 ```bash
 # Authorization from Step 2:
 # Either GITHUB_PAT, OR all 3 of GITHUB_APP_*
+export AUTH_TYPE=pat
 export GITHUB_PAT=c0ffeeface1234567890
 # OR, GitHub App information:
+export AUTH_TYPE=app
 export GITHUB_APP_ID=123456
 export GITHUB_APP_INSTALL_ID=7890123
 export GITHUB_APP_PEM='----------BEGIN RSA PRIVATE KEY...'
@@ -79,6 +81,7 @@ export RELEASE_NAME=actions-runner
 
 # Installing using PAT Auth
 helm install $RELEASE_NAME openshift-actions-runner/actions-runner \
+    --set-string authType=$AUTH_TYPE \
     --set-string githubPat=$GITHUB_PAT \
     --set-string githubOwner=$GITHUB_OWNER \
     --set-string githubRepository=$GITHUB_REPO \
@@ -87,6 +90,7 @@ helm install $RELEASE_NAME openshift-actions-runner/actions-runner \
 
 # OR, Installing using App Auth
 helm install $RELEASE_NAME openshift-actions-runner/actions-runner \
+    --set-string authType=$AUTH_TYPE \
     --set-string githubAppId=$GITHUB_APP_ID \
     --set-string githubAppInstallId=$GITHUB_APP_INSTALL_ID \
     --set-string githubAppPem="$GITHUB_APP_PEM" \
